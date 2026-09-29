@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="50 70 750 200" width="100%" height="100%">
+  <!-- Mountain Peaks & Car Silhouette Emblem Icon -->
+  <g id="emblem">
+    <!-- Cyan Mountain Accent (Left peak) -->
+    <path d="M 95 240 L 140 200 L 210 200 L 245 130 L 275 170" 
+          fill="none" stroke="#00f2fe" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Outer White Mountain Ridge -->
+    <path d="M 125 242 L 160 212 L 220 212 L 290 85 L 350 185" 
+          fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Car Sweeping Roofline -->
+    <path d="M 270 195 C 310 160, 420 120, 560 150 C 650 170, 720 205, 770 230 L 760 250 C 720 220, 640 185, 545 168 C 430 148, 335 180, 270 195 Z" 
+          fill="#ffffff" />
+
+    <!-- Car Cyan Shoulder Accent Line -->
+    <path d="M 425 185 C 500 190, 580 202, 630 220" 
+          fill="none" stroke="#00f2fe" stroke-width="10" stroke-linecap="round" />
+
+    <!-- Car Wheel Arch Front -->
+    <path d="M 620 240 C 625 200, 665 180, 710 180 C 740 180, 770 195, 780 240" 
+          fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" />
+          
+    <!-- Car Front Bumper / Nose Tip -->
+    <path d="M 750 205 L 785 220 L 775 250" 
+          fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

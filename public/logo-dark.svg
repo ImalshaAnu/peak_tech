@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cyanGradGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Mountain Peaks & Car Silhouette Group -->
+  <g id="emblem" transform="translate(0, 0)">
+    <!-- Cyan Mountain Accent (Left peak accent) -->
+    <path d="M 95 240 L 140 200 L 210 200 L 245 130 L 275 170" 
+          fill="none" stroke="#00f2fe" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Outer White Mountain Ridge -->
+    <path d="M 125 242 L 160 212 L 220 212 L 290 85 L 350 185" 
+          fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Car Sweeping Roofline -->
+    <path d="M 270 195 C 310 160, 420 120, 560 150 C 650 170, 720 205, 770 230 L 760 250 C 720 220, 640 185, 545 168 C 430 148, 335 180, 270 195 Z" 
+          fill="#ffffff" />
+
+    <!-- Car Cyan Shoulder Accent Line -->
+    <path d="M 425 185 C 500 190, 580 202, 630 220" 
+          fill="none" stroke="#00f2fe" stroke-width="9" stroke-linecap="round" />
+
+    <!-- Car Wheel Arch Front -->
+    <path d="M 620 240 C 625 200, 665 180, 710 180 C 740 180, 770 195, 780 240" 
+          fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" />
+          
+    <!-- Car Front Bumper / Nose Tip -->
+    <path d="M 750 205 L 785 220 L 775 250" 
+          fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- PEAK Typography -->
+  <g id="peak-text" fill="#ffffff">
+    <!-- P -->
+    <path d="M 120 260 H 225 C 248 260, 260 272, 260 295 C 260 318, 248 330, 225 330 H 155 V 390 H 120 Z M 155 285 V 305 H 220 C 228 305, 233 301, 233 295 C 233 289, 228 285, 220 285 Z" />
+    
+    <!-- E -->
+    <path d="M 290 260 H 405 V 288 H 325 V 310 H 395 V 336 H 325 V 362 H 405 V 390 H 290 Z" />
+
+    <!-- A with Cyan Triangle in Middle -->
+    <path d="M 490 260 L 555 390 H 518 L 500 350 H 455 L 490 260 Z" />
+    <path d="M 465 390 L 515 390 L 490 340 Z" fill="#00f2fe" />
+
+    <!-- K -->
+    <path d="M 605 260 H 640 V 315 L 705 260 H 748 L 675 322 L 752 390 H 705 L 640 332 V 390 H 605 Z" />
+  </g>
+
+  <!-- CAR SALES Subtitle with Cyan Accent Lines -->
+  <g id="subtitle">
+    <!-- Left Accent Line -->
+    <line x1="120" y1="432" x2="225" y2="432" stroke="#00f2fe" stroke-width="6" stroke-linecap="round" />
+
+    <!-- CAR SALES Text -->
+    <text x="445" y="442" 
+          font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="34" 
+          font-weight="800" 
+          letter-spacing="12" 
+          fill="#f8fafc" 
+          text-anchor="middle">
+      CAR SALES
+    </text>
+
+    <!-- Right Accent Line -->
+    <line x1="665" y1="432" x2="770" y2="432" stroke="#00f2fe" stroke-width="6" stroke-linecap="round" />
+  </g>
+</svg>
