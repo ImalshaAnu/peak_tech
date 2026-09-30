@@ -42,10 +42,6 @@ export function FloatingPaths({ position }: { position: number }) {
                         {/* Animated straight glowing beam flowing continuously */}
                         <motion.path
                             d={path.d}
-                            d-straight="true"
-                            d-offset="continuous"
-                            d-name={`path-${path.id}`}
-                            d-len={0.2}
                             stroke="currentColor"
                             strokeWidth={path.width}
                             initial={{ pathLength: 0.2, pathOffset: 0, opacity: 0.15 }}

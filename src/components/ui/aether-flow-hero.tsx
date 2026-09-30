@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
 
 // A utility function for class names
@@ -206,7 +206,7 @@ export const AetherFlowHero = ({
         };
     }, [particleColor, lineColor, backgroundColor]);
 
-    const fadeUpVariants = {
+    const fadeUpVariants: Variants = {
         hidden: { opacity: 0, y: 20 },
         visible: (i: number) => ({
             opacity: 1,
@@ -214,7 +214,7 @@ export const AetherFlowHero = ({
             transition: {
                 delay: i * 0.2 + 0.5,
                 duration: 0.8,
-                ease: "easeInOut",
+                ease: "easeInOut" as const,
             },
         }),
     };
