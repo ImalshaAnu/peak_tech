@@ -38,22 +38,23 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     // Validate phone number: must be exactly 10 digits
     if (!formData.phone || formData.phone.length !== 10) {
-      e.preventDefault();
       setPhoneError('Phone number must be exactly 10 digits.');
       return;
     }
 
     setPhoneError('');
+    setErrorMessage('');
     setIsSubmitting(true);
     const clientName = formData.name;
     setSubmittedName(clientName);
 
-    // Also forward to internal Next.js API route in parallel
     try {
-      fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -64,35 +65,33 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
           budget: formData.budget,
           message: formData.message,
         }),
-      }).catch(() => {});
-    } catch {}
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        budget: '',
-        message: '',
       });
-      setPhoneError('');
-    }, 600);
+
+      const result = await res.json().catch(() => null);
+
+      if (res.ok && result?.success) {
+        setSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          budget: '',
+          message: '',
+        });
+      } else {
+        setErrorMessage(result?.message || 'Failed to deliver message via Resend. Please try again.');
+      }
+    } catch {
+      setErrorMessage('Network error sending message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="py-24 relative bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Invisible iframe to capture form submission response without page navigation */}
-        <iframe
-          name="contact_hidden_iframe"
-          id="contact_hidden_iframe"
-          className="hidden"
-          style={{ display: 'none' }}
-        />
-
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -121,18 +120,9 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
           </div>
         ) : (
           <form
-            action="https://formsubmit.co/hellosadish@gmail.com"
-            method="POST"
-            target="contact_hidden_iframe"
             onSubmit={handleSubmit}
             className="space-y-6"
           >
-            {/* FormSubmit configurations */}
-            <input type="hidden" name="_subject" value={`[Peak Tech Inquiry] New Contact Message from ${formData.name || 'Website Visitor'}`} />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_replyto" value={formData.email} />
-            <input type="hidden" name="Inquiry Type" value="Contact Form - Let's Plan Your Next Move" />
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>

@@ -61,18 +61,18 @@ export const SERVICES: ServiceItem[] = [
     id: 'devops-sre',
     title: 'Enterprise DevOps & DevSecOps',
     tagline: 'Accelerate Releases from Weeks to Minutes',
-    description: 'Transform your development lifecycle with automated CI/CD pipelines, Kubernetes container orchestration, automated security scans, and 24/7 SRE monitoring.',
+    description: 'Transform your development lifecycle with automated CI/CD pipelines, container orchestration, automated security scans, and 24/7 SRE monitoring.',
     category: 'devops',
     icon: 'GitBranch',
     metrics: '8x Faster Deployment Cadence',
     features: [
-      'Kubernetes (EKS, GKE, AKS) cluster design & management',
+      'Containerized microservices design & management',
       'GitOps automated deployment pipelines (ArgoCD, GitHub Actions)',
       'Infrastructure as Code (IaC) governance and drift detection',
       'Chaos engineering and automated disaster recovery tests',
     ],
-    technologies: ['Kubernetes', 'Docker', 'ArgoCD', 'GitHub Actions', 'Datadog', 'Prometheus'],
-    deliverables: ['CI/CD Pipeline Setup', 'K8s Cluster Provisioning', 'Monitoring & Alerting Setup', 'SRE Runbooks']
+    technologies: ['Docker', 'ArgoCD', 'GitHub Actions', 'Datadog', 'Prometheus', 'Terraform'],
+    deliverables: ['CI/CD Pipeline Setup', 'Container Infrastructure Provisioning', 'Monitoring & Alerting Setup', 'SRE Runbooks']
   },
   {
     id: 'ai-data-solutions',
@@ -83,13 +83,13 @@ export const SERVICES: ServiceItem[] = [
     icon: 'Cpu',
     metrics: '10x Faster Data Processing',
     features: [
-      'Custom LLM fine-tuning & enterprise RAG pipelines',
+      'Custom LLM fine-tuning & enterprise AI pipelines',
       'Real-time streaming data pipelines (Kafka, Apache Flink)',
       'Modern data warehousing (Snowflake, BigQuery, Databricks)',
       'Intelligent computer vision and natural language automation',
     ],
     technologies: ['OpenAI', 'LangChain', 'Python', 'Snowflake', 'Apache Kafka', 'PyTorch'],
-    deliverables: ['Data Pipeline Architecture', 'AI Model Integration', 'RAG Knowledge System', 'Analytics BI Dashboards']
+    deliverables: ['Data Pipeline Architecture', 'AI Model Integration', 'Enterprise AI Knowledge System', 'Analytics BI Dashboards']
   },
   {
     id: 'cybersecurity-zero-trust',
@@ -145,7 +145,7 @@ export const SERVICES: ServiceItem[] = [
 ];
 
 export const TECH_STACK = [
-  { name: 'Kubernetes', category: 'DevOps & Cloud', level: 'Core', icon: 'Box' },
+  { name: 'Docker & Containers', category: 'DevOps & Cloud', level: 'Core', icon: 'Box' },
   { name: 'AWS Cloud', category: 'DevOps & Cloud', level: 'Premier Partner', icon: 'Cloud' },
   { name: 'Google Cloud', category: 'DevOps & Cloud', level: 'Certified', icon: 'Cloud' },
   { name: 'Microsoft Azure', category: 'DevOps & Cloud', level: 'Gold Partner', icon: 'Cloud' },
@@ -173,13 +173,13 @@ export const CASE_STUDIES: CaseStudy[] = [
     logoText: 'APEX BANK',
     title: 'Migrating 8 Million Accounts to AWS with Zero Downtime',
     challenge: 'Apex Financial suffered from bottlenecked monolithic on-prem servers during peak trading hours, leading to latency spikes and high operational overhead.',
-    solution: 'Engineered an active-active multi-region Kubernetes microservices topology on AWS with automated RDS Aurora failover and real-time Kafka transaction processing.',
+    solution: 'Engineered an active-active multi-region microservices topology on AWS with automated RDS Aurora failover and real-time Kafka transaction processing.',
     results: [
       { label: 'Cloud Cost Reduction', value: '42%', detail: 'Optimized auto-scaling and spot instances' },
       { label: 'Transaction Latency', value: '< 18ms', detail: 'Down from 340ms average response' },
       { label: 'Uptime SLA', value: '99.999%', detail: 'Zero outages in 18 consecutive months' },
     ],
-    tags: ['AWS', 'Kubernetes', 'Kafka', 'Zero Downtime', 'FinOps'],
+    tags: ['AWS', 'Microservices', 'Kafka', 'Zero Downtime', 'FinOps'],
     quote: {
       text: 'Peak Tech’s engineering mastery allowed us to migrate seamlessly without a single minute of customer downtime. Their DevSecOps practices are best-in-class.',
       author: 'Marcus Vance',
@@ -256,7 +256,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: 'CloudFlow SaaS',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
     rating: 5,
-    content: 'From our Seed stage to Series B scaling, Peak Tech handled our Kubernetes clusters and CI/CD pipelines flawlessly. We ship features 5x faster than our competitors.',
+    content: 'From our Seed stage to Series B scaling, Peak Tech handled our cloud infrastructure and CI/CD pipelines flawlessly. We ship features 5x faster than our competitors.',
     metric: '5x Deployment Speed'
   }
 ];
@@ -279,7 +279,7 @@ export const FAQS = [
   },
   {
     q: 'What cloud providers and infrastructure stacks do you specialize in?',
-    a: 'We are certified partners across Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure, alongside private cloud / on-premise Kubernetes clusters, hybrid setups, OpenTofu, and Terraform.'
+    a: 'We are certified partners across Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure, alongside private cloud / on-premise container clusters, hybrid setups, OpenTofu, and Terraform.'
   },
   {
     q: 'How does your IT Cost & Project Estimator work?',

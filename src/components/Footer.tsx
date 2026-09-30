@@ -87,9 +87,6 @@ export default function Footer() {
                 Contact
               </h4>
               <div className="space-y-3">
-                <a href="mailto:hellosadish@gmail.com" className="block text-sm text-slate-300 hover:text-white transition-colors">
-                  hellosadish@gmail.com
-                </a>
                 <a href="tel:+17805146855" className="block text-sm text-slate-300 hover:text-white transition-colors">
                   Phone number: +1 780 514 6855
                 </a>

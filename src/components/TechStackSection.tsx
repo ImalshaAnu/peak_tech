@@ -51,7 +51,7 @@ export default function TechStackSection() {
   const certifications = [
     { title: 'AWS Advanced Tier Partner', desc: 'DevOps & Migration Competency' },
     { title: 'Microsoft Solutions Partner', desc: 'Azure Cloud Infrastructure' },
-    { title: 'Google Cloud Premier', desc: 'Data Analytics & Kubernetes' },
+    { title: 'Google Cloud Premier', desc: 'Data Analytics & Cloud Architecture' },
     { title: 'ISO/IEC 27001 Certified', desc: 'Global InfoSec Management' },
     { title: 'SOC 2 Type II Audited', desc: 'Enterprise Security & Privacy' },
   ];

@@ -24,7 +24,7 @@ export default function CostEstimator({ onOpenConsultationWithPlan }: CostEstima
   // State for user configuration
   const [scaleTier, setScaleTier] = useState<'startup' | 'growth' | 'enterprise'>('growth');
   const [cloudProvider, setCloudProvider] = useState<'aws' | 'azure' | 'gcp' | 'hybrid'>('aws');
-  const [hasKubernetes, setHasKubernetes] = useState(true);
+  const [hasAutoScaling, setHasAutoScaling] = useState(true);
   const [hasAIIntegration, setHasAIIntegration] = useState(false);
   const [hasCompliance, setHasCompliance] = useState(true);
   const [has24x7SRE, setHas24x7SRE] = useState(true);
@@ -46,11 +46,11 @@ export default function CostEstimator({ onOpenConsultationWithPlan }: CostEstima
   const recommendedTier = scaleTier === 'startup' 
     ? 'Lean Cloud Foundation (Terraform + Container Apps)' 
     : scaleTier === 'growth' 
-      ? 'Multi-AZ Kubernetes Mesh + CI/CD GitOps' 
+      ? 'Multi-AZ Cloud Mesh + CI/CD GitOps' 
       : 'Enterprise Multi-Region Zero-Trust Cloud Fabric';
 
   const handleConsultWithPlan = () => {
-    const summary = `Cloud: ${cloudProvider.toUpperCase()}, Spend: $${currentMonthlySpend.toLocaleString()}/mo, Tier: ${scaleTier}, K8s: ${hasKubernetes ? 'Yes' : 'No'}, AI: ${hasAIIntegration ? 'Yes' : 'No'}, SRE: ${has24x7SRE ? 'Yes' : 'No'}, Compliance: ${hasCompliance ? 'Yes' : 'No'}`;
+    const summary = `Cloud: ${cloudProvider.toUpperCase()}, Spend: $${currentMonthlySpend.toLocaleString()}/mo, Tier: ${scaleTier}, AutoScale: ${hasAutoScaling ? 'Yes' : 'No'}, AI: ${hasAIIntegration ? 'Yes' : 'No'}, SRE: ${has24x7SRE ? 'Yes' : 'No'}, Compliance: ${hasCompliance ? 'Yes' : 'No'}`;
     if (onOpenConsultationWithPlan) {
       onOpenConsultationWithPlan(summary);
     }
@@ -179,13 +179,13 @@ export default function CostEstimator({ onOpenConsultationWithPlan }: CostEstima
                 <label className="flex items-center gap-3 p-3 rounded-xl bg-dark-850 border border-slate-800 cursor-pointer hover:border-slate-700 transition-colors">
                   <input
                     type="checkbox"
-                    checked={hasKubernetes}
-                    onChange={(e) => setHasKubernetes(e.target.checked)}
+                    checked={hasAutoScaling}
+                    onChange={(e) => setHasAutoScaling(e.target.checked)}
                     className="w-4 h-4 rounded text-brand-600 bg-dark-900 border-slate-700 focus:ring-cyber-cyan"
                   />
                   <div>
-                    <div className="text-xs font-semibold text-slate-200">Kubernetes (EKS/GKE/AKS)</div>
-                    <div className="text-[10px] text-slate-400">Container orchestration & auto-scaling</div>
+                    <div className="text-xs font-semibold text-slate-200">Auto-Scaling Infrastructure</div>
+                    <div className="text-[10px] text-slate-400">Elastic compute & automated load balancing</div>
                   </div>
                 </label>
 
@@ -223,8 +223,8 @@ export default function CostEstimator({ onOpenConsultationWithPlan }: CostEstima
                     className="w-4 h-4 rounded text-brand-600 bg-dark-900 border-slate-700 focus:ring-cyber-cyan"
                   />
                   <div>
-                    <div className="text-xs font-semibold text-slate-200">Applied AI & RAG Pipeline</div>
-                    <div className="text-[10px] text-slate-400">Custom LLMs & GPU orchestration</div>
+                    <div className="text-xs font-semibold text-slate-200">Applied AI & Automation</div>
+                    <div className="text-[10px] text-slate-400">Custom intelligent automation & data pipelines</div>
                   </div>
                 </label>
 

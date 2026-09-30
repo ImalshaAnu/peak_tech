@@ -115,7 +115,7 @@ export default function AboutUsSection({ onOpenConsultation }: AboutUsSectionPro
               </div>
               <div className="flex items-center gap-3 text-sm font-medium text-slate-200">
                 <CheckCircle2 className="w-5 h-5 text-[#00F2FE] shrink-0" />
-                <span>Custom AI model fine-tuning and enterprise RAG pipelines</span>
+                <span>Custom AI model fine-tuning and enterprise data pipelines</span>
               </div>
               <div className="flex items-center gap-3 text-sm font-medium text-slate-200">
                 <CheckCircle2 className="w-5 h-5 text-[#00F2FE] shrink-0" />

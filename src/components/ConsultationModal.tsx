@@ -22,7 +22,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
-  const [service, setService] = useState('Cloud Architecture & Migration');
+  const [service, setService] = useState('UX Research (SERVICE / 01)');
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -32,19 +32,24 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
 
   useEffect(() => {
     if (prefilledPlan) {
-      setNotes(`Estimator Spec: ${prefilledPlan}`);
+      if (prefilledPlan.includes('SERVICE') || prefilledPlan.includes('SVC') || prefilledPlan.includes('UX') || prefilledPlan.includes('Development') || prefilledPlan.includes('Marketing') || prefilledPlan.includes('Optimization') || prefilledPlan.includes('Support')) {
+        setService(prefilledPlan);
+      } else {
+        setNotes(`Details: ${prefilledPlan}`);
+      }
     }
   }, [prefilledPlan]);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
     setSubmittedName(name);
 
-    // Also forward to internal Next.js API in parallel
     try {
-      fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -55,31 +60,30 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
           service,
           notes,
         }),
-      }).catch(() => {});
-    } catch {}
+      });
 
-    setTimeout(() => {
+      const result = await res.json().catch(() => null);
+
+      if (res.ok && result?.success) {
+        setSubmitted(true);
+        setName('');
+        setEmail('');
+        setCompany('');
+        setNotes('');
+      } else {
+        setErrorMessage(result?.message || 'Failed to request consultation via Resend. Please try again.');
+      }
+    } catch {
+      setErrorMessage('Network error submitting request. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setName('');
-      setEmail('');
-      setCompany('');
-      setNotes('');
-    }, 600);
+    }
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
       <div className="relative w-full max-w-lg bg-dark-900 border border-slate-700/80 rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6">
         
-        {/* Invisible iframe to capture form submission response without page navigation */}
-        <iframe
-          name="consultation_hidden_iframe"
-          id="consultation_hidden_iframe"
-          className="hidden"
-          style={{ display: 'none' }}
-        />
-
         {/* Close button */}
         <button
           onClick={onClose}
@@ -125,18 +129,9 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
             </div>
 
             <form
-              action="https://formsubmit.co/hellosadish@gmail.com"
-              method="POST"
-              target="consultation_hidden_iframe"
               onSubmit={handleSubmit}
               className="space-y-4"
             >
-              {/* FormSubmit configurations */}
-              <input type="hidden" name="_subject" value={`[Peak Tech Inquiry] Book a Call - ${name || 'Discovery'} (${company || 'New Lead'})`} />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_replyto" value={email} />
-              <input type="hidden" name="Inquiry Type" value="Book Technical Discovery Call" />
 
               <div>
                 <label className="block text-xs font-semibold text-slate-300 mb-1">
@@ -194,11 +189,14 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                     onChange={(e) => setService(e.target.value)}
                     className="w-full px-3 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white text-xs focus:outline-none focus:border-cyber-cyan"
                   >
-                    <option value="Cloud Architecture & Migration">Cloud Migration</option>
-                    <option value="Enterprise DevOps & DevSecOps">DevOps & K8s</option>
-                    <option value="Applied AI & Data Engineering">Applied AI & RAG</option>
-                    <option value="Cybersecurity & Zero-Trust">Cybersecurity</option>
-                    <option value="24/7 Managed SRE">24/7 SRE Support</option>
+                    <option value="UX Research (SERVICE / 01)">UX Research (SERVICE / 01)</option>
+                    <option value="UI/UX Design (SERVICE / 02)">UI/UX Design (SERVICE / 02)</option>
+                    <option value="Product Development (SERVICE / 03)">Product Development (SERVICE / 03)</option>
+                    <option value="Branding & Growth (SERVICE / 04)">Branding & Growth (SERVICE / 04)</option>
+                    <option value="Strategic SEO Optimization (SVC-05)">Strategic SEO Optimization (SVC-05)</option>
+                    <option value="Social Media Marketing (SVC-06)">Social Media Marketing (SVC-06)</option>
+                    <option value="Speed Optimization (SVC-07)">Speed Optimization (SVC-07)</option>
+                    <option value="Maintenance & Support (SVC-08)">Maintenance & Support (SVC-08)</option>
                   </select>
                 </div>
               </div>

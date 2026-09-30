@@ -9,13 +9,18 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Peak Tech IT Solutions | Enterprise Cloud, DevOps & AI Solutions",
-  description: "Empowering global enterprises with auto-scaling Kubernetes architectures, 24/7 Site Reliability Engineering (SRE), Zero-Trust cybersecurity, and applied generative AI systems.",
+  description: "Empowering global enterprises with auto-scaling cloud architectures, 24/7 Site Reliability Engineering (SRE), Zero-Trust cybersecurity, and applied generative AI systems.",
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: ["/logo.png"],
+    apple: [{ url: "/logo.png", type: "image/png" }],
+  },
   keywords: [
     "Peak Tech",
     "IT Solutions",
     "Cloud Migration",
     "DevOps",
-    "Kubernetes",
+    "CI/CD",
     "FinOps",
     "Applied AI",
     "Cybersecurity",
@@ -36,6 +41,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
