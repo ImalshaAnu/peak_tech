@@ -27,6 +27,9 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const [errorMessage, setErrorMessage] = useState('');
+  const [submittedName, setSubmittedName] = useState('');
+
   useEffect(() => {
     if (prefilledPlan) {
       setNotes(`Estimator Spec: ${prefilledPlan}`);
@@ -36,18 +39,47 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     setIsSubmitting(true);
+    setSubmittedName(name);
+
+    // Also forward to internal Next.js API in parallel
+    try {
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'book_a_call',
+          name,
+          email,
+          company,
+          service,
+          notes,
+        }),
+      }).catch(() => {});
+    } catch {}
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 1000);
+      setName('');
+      setEmail('');
+      setCompany('');
+      setNotes('');
+    }, 600);
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
       <div className="relative w-full max-w-lg bg-dark-900 border border-slate-700/80 rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6">
         
+        {/* Invisible iframe to capture form submission response without page navigation */}
+        <iframe
+          name="consultation_hidden_iframe"
+          id="consultation_hidden_iframe"
+          className="hidden"
+          style={{ display: 'none' }}
+        />
+
         {/* Close button */}
         <button
           onClick={onClose}
@@ -61,9 +93,9 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
             <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
               <CheckCircle2 className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-white">Discovery Audit Confirmed</h3>
+            <h3 className="text-xl font-bold text-white">Thank You!</h3>
             <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
-              We have received your technical specifications. A Principal Solutions Architect will reach out to <span className="text-white font-medium">{email}</span> within 2 hours with our mutual NDA and calendar booking options.
+              We have received your request and will reach out shortly.
             </p>
             <div className="pt-2">
               <button
@@ -92,13 +124,27 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              action="https://formsubmit.co/hellosadish@gmail.com"
+              method="POST"
+              target="consultation_hidden_iframe"
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              {/* FormSubmit configurations */}
+              <input type="hidden" name="_subject" value={`[Peak Tech Inquiry] Book a Call - ${name || 'Discovery'} (${company || 'New Lead'})`} />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_replyto" value={email} />
+              <input type="hidden" name="Inquiry Type" value="Book Technical Discovery Call" />
+
               <div>
                 <label className="block text-xs font-semibold text-slate-300 mb-1">
                   Full Name *
                 </label>
                 <input
                   type="text"
+                  name="Full Name"
                   required
                   placeholder="e.g. Jordan Smith"
                   value={name}
@@ -113,6 +159,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                 </label>
                 <input
                   type="email"
+                  name="Corporate Email"
                   required
                   placeholder="jordan@enterprise.com"
                   value={email}
@@ -128,6 +175,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                   </label>
                   <input
                     type="text"
+                    name="Company Name"
                     required
                     placeholder="Acme Corp"
                     value={company}
@@ -141,6 +189,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                     Primary Domain
                   </label>
                   <select
+                    name="Primary Domain"
                     value={service}
                     onChange={(e) => setService(e.target.value)}
                     className="w-full px-3 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white text-xs focus:outline-none focus:border-cyber-cyan"
@@ -159,6 +208,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                   Stack Details / Goals
                 </label>
                 <textarea
+                  name="Stack Details & Goals"
                   rows={3}
                   placeholder="Current cloud spend, migration objectives, or uptime challenges..."
                   value={notes}
@@ -171,6 +221,18 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span>Protected by Mutual Non-Disclosure Agreement (MNDA).</span>
               </div>
+
+              {errorMessage && (
+                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs space-y-1.5">
+                  <p>{errorMessage}</p>
+                  <a
+                    href={`mailto:hellosadish@gmail.com?subject=${encodeURIComponent(`[Peak Tech Inquiry] Book a Call - ${name || 'Inquiry'}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}\nService: ${service}\nNotes: ${notes}`)}`}
+                    className="inline-block text-cyber-cyan underline hover:text-white font-medium"
+                  >
+                    Click to email hellosadish@gmail.com directly &rarr;
+                  </a>
+                </div>
+              )}
 
               <button
                 type="submit"

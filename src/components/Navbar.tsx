@@ -35,16 +35,16 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
       <div 
         className={`w-full transition-all duration-300 ${
           isScrolled 
-            ? 'bg-black/95 backdrop-blur-md shadow-xl shadow-black/60 py-3 border-b border-white/[0.08]' 
-            : 'bg-black/90 backdrop-blur-sm py-4 border-b border-white/[0.05]'
+            ? 'bg-black/95 backdrop-blur-md shadow-xl shadow-black/60 py-2.5 sm:py-3 border-b border-white/[0.08]' 
+            : 'bg-black/90 backdrop-blur-sm py-3 sm:py-4 border-b border-white/[0.05]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-2">
             {/* Left: Brand & Public Logo */}
-            <a href="#" className="flex items-center gap-3.5 group">
+            <a href="#" className="flex items-center gap-2 sm:gap-3.5 group flex-shrink-0">
               {/* Logo container with rounded cyan outline inspired by reference */}
-              <div className="relative h-11 w-11 flex items-center justify-center flex-shrink-0">
+              <div className="relative h-8 w-8 sm:h-10 sm:w-10 md:h-11 md:w-11 flex items-center justify-center flex-shrink-0">
                 <img 
                   src="/logo-icon.svg" 
                   alt="Peak Logo" 
@@ -55,15 +55,10 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
                 />
               </div>
 
-              {/* Brand Typography matching reference screenshot */}
-              <div className="flex flex-col">
-                <span className="font-extrabold text-xl tracking-tight text-white flex items-center gap-1 group-hover:text-cyan-50 transition-colors">
-                  PEAK<span className="text-white font-bold">TECH</span>
-                </span>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-slate-400 -mt-0.5">
-                  CAR SALES
-                </span>
-              </div>
+              {/* Brand Typography */}
+              <span className="font-extrabold text-base sm:text-xl tracking-tight text-white flex items-center gap-1 group-hover:text-cyan-50 transition-colors whitespace-nowrap">
+                PEAK<span className="text-white font-bold">TECH</span>
+              </span>
             </a>
 
             {/* Center: Navigation Links */}
@@ -91,19 +86,19 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
             </div>
 
             {/* Mobile Actions & Menu Toggle */}
-            <div className="flex md:hidden items-center gap-3">
+            <div className="flex md:hidden items-center gap-1.5 sm:gap-3 flex-shrink-0">
               <button
                 onClick={onOpenConsultation}
-                className="px-4 py-1.5 rounded-full border border-cyan-400 text-white text-xs font-bold hover:bg-cyan-500/10 transition-colors"
+                className="px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full border border-cyan-400 text-white text-[11px] sm:text-xs font-bold hover:bg-cyan-500/10 transition-colors whitespace-nowrap"
               >
                 Book a Call
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors"
+                className="p-1.5 sm:p-2 rounded-lg bg-dark-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors flex-shrink-0"
                 aria-label="Toggle Navigation Menu"
               >
-                {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
+                {mobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
             </div>
           </div>

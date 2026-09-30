@@ -29,14 +29,9 @@ export default function Footer() {
                   }}
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-2xl tracking-tight text-white leading-none mb-1">
-                  Peak Tech
-                </span>
-                <span className="text-[10px] uppercase tracking-widest text-cyber-cyan font-bold leading-none">
-                  Solutions
-                </span>
-              </div>
+              <span className="font-bold text-2xl tracking-tight text-white">
+                Peak Tech
+              </span>
             </div>
 
             <p className="text-slate-300 text-sm max-w-sm leading-relaxed">
@@ -60,8 +55,13 @@ export default function Footer() {
                 <Facebook className="w-4 h-4" />
                 <span>Facebook</span>
               </a>
-              <a href="#" className="flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors">
-                <MessageCircle className="w-4 h-4" />
+              <a 
+                href="https://wa.me/17805146855" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-400" />
                 <span>WhatsApp</span>
               </a>
             </div>
@@ -87,12 +87,12 @@ export default function Footer() {
                 Contact
               </h4>
               <div className="space-y-3">
-                <a href="mailto:info@peaktech-solutions.com" className="block text-sm text-slate-300 hover:text-white transition-colors">
-                  info@peaktech-solutions.com
+                <a href="mailto:hellosadish@gmail.com" className="block text-sm text-slate-300 hover:text-white transition-colors">
+                  hellosadish@gmail.com
                 </a>
-                <p className="text-sm text-slate-300">
-                  Phone number: 072 133 6854
-                </p>
+                <a href="tel:+17805146855" className="block text-sm text-slate-300 hover:text-white transition-colors">
+                  Phone number: +1 780 514 6855
+                </a>
               </div>
             </div>
 
@@ -101,8 +101,9 @@ export default function Footer() {
                 Company address
               </h4>
               <p className="text-sm text-slate-300 leading-relaxed max-w-xs">
-                121/18, 6th Lane, Namal Uyana,<br />
-                Kithulahena
+                5005, 45 Avenue,<br />
+                Drayton Valley, T7A 1L1,<br />
+                Canada
               </p>
             </div>
           </div>

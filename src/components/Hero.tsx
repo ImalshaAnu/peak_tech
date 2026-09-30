@@ -2,8 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { AetherFlowCanvas } from "@/components/ui/aether-flow-canvas";
-import { Sparkles, ChevronRight } from "lucide-react";
+import { OrbitalRingsBackground } from "@/components/ui/orbital-rings-background";
 
 interface HeroProps {
   onOpenConsultation: () => void;
@@ -19,42 +18,21 @@ export default function Hero({
   const words = title.split(" ");
 
   return (
-    <section className="relative min-h-[92vh] sm:min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-[#050811] text-slate-900 dark:text-white pt-24 sm:pt-28 pb-16">
-      {/* Interactive Aether Flow Straight-Line Particle Constellation Background */}
-      <AetherFlowCanvas
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        particleColor="rgba(0, 242, 254, 0.75)"
-        lineColor="rgba(56, 189, 248, "
-        glowColor="rgba(255, 255, 255, "
-        backgroundColor="transparent"
-      />
-
-      {/* Cyber ambient glow highlights */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-cyan-500/10 via-blue-500/10 to-purple-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
+    <section className="relative min-h-[92vh] sm:min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030712] text-white pt-24 sm:pt-28 pb-16">
+      {/* Concentric Orbital Rings & Deep Blue Ambient Radiance Background */}
+      <OrbitalRingsBackground />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Top Innovation Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs sm:text-sm font-medium tracking-wide mb-6 backdrop-blur-md shadow-[0_0_15px_rgba(0,242,254,0.15)]"
-        >
-          <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-          <span>Next-Gen Enterprise Cloud & AI Architectures</span>
-          <ChevronRight className="w-3.5 h-3.5 text-cyan-400/70" />
-        </motion.div>
-
         {/* Dynamic Staggered Letter Headline */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter leading-[1.08]">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight leading-[1.2] py-2 overflow-visible">
             {words.map((word, wordIndex) => (
-              <span key={wordIndex} className="inline-block mr-3 sm:mr-5 last:mr-0">
+              <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.28em] last:mr-0 py-1">
                 {word.split("").map((letter, letterIndex) => (
                   <motion.span
                     key={`${wordIndex}-${letterIndex}`}
@@ -66,7 +44,7 @@ export default function Hero({
                       stiffness: 150,
                       damping: 24,
                     }}
-                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-600 dark:from-white dark:via-slate-100 dark:to-slate-300"
+                    className="inline-block pt-[0.25em] pb-[0.1em] -mt-[0.25em] -mb-[0.1em] text-transparent bg-clip-text bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-700 dark:from-white dark:via-slate-100 dark:to-slate-300 select-none"
                   >
                     {letter}
                   </motion.span>
