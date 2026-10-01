@@ -3,12 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   X, 
-  Send, 
   CheckCircle2, 
-  ShieldCheck, 
-  Calendar, 
-  Clock, 
-  Sparkles,
   ArrowRight
 } from 'lucide-react';
 
@@ -116,15 +111,11 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
         ) : (
           <>
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-xs font-medium text-cyber-cyan mb-2">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>DIRECT WITH PRINCIPAL ARCHITECTS</span>
-              </div>
               <h3 className="text-2xl font-extrabold text-white">
                 Book Technical Discovery Call
               </h3>
               <p className="text-xs text-slate-400 mt-1">
-                30-minute private infrastructure evaluation under strict Mutual NDA.
+                30-minute private infrastructure evaluation.
               </p>
             </div>
 
@@ -213,11 +204,6 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                   onChange={(e) => setNotes(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyber-cyan resize-none"
                 />
-              </div>
-
-              <div className="flex items-center gap-2 text-[11px] text-slate-400">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Protected by Mutual Non-Disclosure Agreement (MNDA).</span>
               </div>
 
               {errorMessage && (
