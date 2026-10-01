@@ -15,9 +15,7 @@ export default function Home() {
   const [selectedPlanSummary, setSelectedPlanSummary] = useState<string>('');
 
   const handleOpenConsultation = (serviceOrPlan?: string) => {
-    if (typeof serviceOrPlan === 'string') {
-      setSelectedPlanSummary(serviceOrPlan);
-    }
+    setSelectedPlanSummary(serviceOrPlan || '');
     setIsConsultationOpen(true);
   };
 
@@ -48,7 +46,7 @@ export default function Home() {
           onOpenConsultation={handleOpenConsultation} 
         />
 
-        <TestimonialsSection />
+        <TestimonialsSection onOpenConsultation={handleOpenConsultation} />
 
         <ContactSection prefilledPlan={selectedPlanSummary} />
       </main>

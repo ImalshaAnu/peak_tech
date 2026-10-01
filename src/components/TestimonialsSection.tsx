@@ -9,7 +9,11 @@ import {
 } from 'lucide-react';
 import { FAQS } from '@/data/mockData';
 
-export default function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  onOpenConsultation?: (plan?: string) => void;
+}
+
+export default function TestimonialsSection({ onOpenConsultation }: TestimonialsSectionProps = {}) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
@@ -50,8 +54,12 @@ export default function TestimonialsSection() {
                 Didn't find what you're looking for?<br/> Let's connect, I'm here to help!
               </p>
               
-              <button className="w-full py-4 px-6 bg-[#1a1f2b] hover:bg-[#222938] text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-3 transition-colors border border-slate-700/50">
-                <Send className="w-4 h-4" />
+              <button 
+                type="button"
+                onClick={() => onOpenConsultation?.('General Consultation / Custom Project Inquiry')}
+                className="w-full py-4 px-6 bg-[#1a1f2b] hover:bg-[#222938] text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-3 transition-all border border-slate-700/50 hover:border-slate-500 cursor-pointer active:scale-[0.98] shadow-sm hover:shadow-cyan-500/10"
+              >
+                <Send className="w-4 h-4 text-cyber-cyan" />
                 <span>Book a Consultation</span>
               </button>
             </div>
