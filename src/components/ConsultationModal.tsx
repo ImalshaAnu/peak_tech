@@ -224,10 +224,10 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                 <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs space-y-1.5">
                   <p>{errorMessage}</p>
                   <a
-                    href={`mailto:hellosadish@gmail.com?subject=${encodeURIComponent(`[Peak Tech Inquiry] Book a Call - ${name || 'Inquiry'}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}\nService: ${service}\nNotes: ${notes}`)}`}
+                    href={`mailto:imalshaanupamal@gmail.com?subject=${encodeURIComponent(`[Peak Tech Inquiry] Book a Call - ${name || 'Inquiry'}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nCompany: ${company}\nService: ${service}\nNotes: ${notes}`)}`}
                     className="inline-block text-cyber-cyan underline hover:text-white font-medium"
                   >
-                    Click to email hellosadish@gmail.com directly &rarr;
+                    Click to email imalshaanupamal@gmail.com directly &rarr;
                   </a>
                 </div>
               )}

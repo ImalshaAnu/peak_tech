@@ -249,10 +249,10 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
               <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs space-y-1.5 text-center">
                 <p>{errorMessage}</p>
                 <a
-                  href={`mailto:hellosadish@gmail.com?subject=${encodeURIComponent(`[Peak Tech Inquiry] New Message from ${formData.name || 'Website Visitor'}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nBudget: ${formData.budget}\nMessage: ${formData.message}`)}`}
+                  href={`mailto:imalshaanupamal@gmail.com?subject=${encodeURIComponent(`[Peak Tech Inquiry] New Message from ${formData.name || 'Website Visitor'}`)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nBudget: ${formData.budget}\nMessage: ${formData.message}`)}`}
                   className="inline-block text-slate-900 underline hover:text-black font-semibold"
                 >
-                  Click here to send email to hellosadish@gmail.com directly &rarr;
+                  Click here to send email to imalshaanupamal@gmail.com directly &rarr;
                 </a>
               </div>
             )}
