@@ -154,7 +154,8 @@ export default function CaseStudiesSection({ onOpenConsultation }: CaseStudiesPr
               ))}
 
               <button
-                onClick={onOpenConsultation}
+                type="button"
+                onClick={() => onOpenConsultation?.()}
                 className="w-full mt-4 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-cyber-blue text-white font-semibold text-sm shadow-glow-sm hover:shadow-glow-cyan transition-all flex items-center justify-center gap-2"
               >
                 <span>Read Full Technical Architecture Whitepaper</span>

@@ -159,7 +159,8 @@ export default function ServicesSection({ onOpenConsultation }: ServicesSectionP
                 </button>
 
                 <button
-                  onClick={onOpenConsultation}
+                  type="button"
+                  onClick={() => onOpenConsultation()}
                   className="text-xs font-medium px-3 py-1.5 rounded-lg bg-brand-600/20 hover:bg-brand-600 text-brand-300 hover:text-white transition-all border border-brand-500/30"
                 >
                   Consult

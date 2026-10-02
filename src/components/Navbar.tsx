@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
-  onOpenConsultation: () => void;
+  onOpenConsultation: (topicOrService?: string) => void;
 }
 
 export default function Navbar({ onOpenConsultation }: NavbarProps) {
@@ -78,7 +78,8 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
             {/* Right: Book a Call Outline Pill Button */}
             <div className="hidden md:flex items-center">
               <button
-                onClick={onOpenConsultation}
+                type="button"
+                onClick={() => onOpenConsultation('Book a Call')}
                 className="relative px-7 py-2 rounded-full border border-[#009b96] hover:border-cyan-300 bg-transparent hover:bg-cyan-500/10 text-white font-bold text-sm tracking-wide shadow-sm hover:shadow-[0_0_20px_rgba(0,242,254,0.35)] transition-all duration-300 active:scale-95"
               >
                 Book a Call
@@ -88,7 +89,8 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
             {/* Mobile Actions & Menu Toggle */}
             <div className="flex md:hidden items-center gap-1.5 sm:gap-3 flex-shrink-0">
               <button
-                onClick={onOpenConsultation}
+                type="button"
+                onClick={() => onOpenConsultation('Book a Call')}
                 className="px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full border border-cyan-400 text-white text-[11px] sm:text-xs font-bold hover:bg-cyan-500/10 transition-colors whitespace-nowrap"
               >
                 Book a Call
@@ -124,9 +126,10 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
 
           <div className="pt-2">
             <button
+              type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenConsultation();
+                onOpenConsultation('Book a Call');
               }}
               className="w-full py-3 rounded-full border border-cyan-400 text-white font-bold text-sm text-center shadow-[0_0_15px_rgba(0,242,254,0.25)] hover:bg-cyan-500/10 transition-all"
             >

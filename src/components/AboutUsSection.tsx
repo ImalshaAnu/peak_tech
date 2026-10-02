@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2, Award } from 'lucide-react';
 
 interface AboutUsSectionProps {
-  onOpenConsultation: () => void;
+  onOpenConsultation?: (topicOrService?: string) => void;
 }
 
 export default function AboutUsSection({ onOpenConsultation }: AboutUsSectionProps) {
@@ -126,7 +126,8 @@ export default function AboutUsSection({ onOpenConsultation }: AboutUsSectionPro
             {/* CTA Button */}
             <div className="pt-4">
               <button
-                onClick={onOpenConsultation}
+                type="button"
+                onClick={() => onOpenConsultation?.('Get a Quote')}
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#00F2FE] hover:bg-cyan-300 text-slate-950 font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-[#00F2FE]/25 hover:shadow-xl hover:shadow-[#00F2FE]/45 hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
               >
                 <span>GET A QUOTE</span>

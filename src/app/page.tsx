@@ -14,8 +14,9 @@ export default function Home() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [selectedPlanSummary, setSelectedPlanSummary] = useState<string>('');
 
-  const handleOpenConsultation = (serviceOrPlan?: string) => {
-    setSelectedPlanSummary(serviceOrPlan || '');
+  const handleOpenConsultation = (serviceOrPlan?: unknown) => {
+    const planStr = typeof serviceOrPlan === 'string' ? serviceOrPlan : '';
+    setSelectedPlanSummary(planStr);
     setIsConsultationOpen(true);
   };
 

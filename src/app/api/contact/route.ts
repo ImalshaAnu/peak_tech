@@ -25,9 +25,26 @@ export async function POST(req: Request) {
     }
 
     const isBookACall = formType === 'book_a_call';
-    const subject = isBookACall
-      ? `[Peak Tech Inquiry] Discovery Call Request from ${name}${company ? ` (${company})` : ''}`
-      : `[Peak Tech Inquiry] New Contact Message from ${name}`;
+    const isQuote = formType === 'get_a_quote';
+    const isConsultation = formType === 'consultation';
+
+    let subject = `[Peak Tech Inquiry] New Contact Message from ${name}`;
+    let submissionType = "Contact Form / Let's Plan Your Next Move";
+    let badgeText = 'Direct Inquiry';
+
+    if (isQuote) {
+      subject = `[Peak Tech Inquiry] Quote Request from ${name}${company ? ` (${company})` : ''}`;
+      submissionType = 'Custom Quote Request';
+      badgeText = 'Quote Request';
+    } else if (isBookACall) {
+      subject = `[Peak Tech Inquiry] Discovery Call Request from ${name}${company ? ` (${company})` : ''}`;
+      submissionType = 'Book a Call / Discovery Inquiry';
+      badgeText = 'Discovery Call Request';
+    } else if (isConsultation) {
+      subject = `[Peak Tech Inquiry] Consultation Request from ${name}${company ? ` (${company})` : ''}`;
+      submissionType = 'Technical Consultation Request';
+      badgeText = 'Consultation Request';
+    }
 
     const resendApiKey = process.env.RESEND_API_KEY;
 
@@ -40,7 +57,7 @@ export async function POST(req: Request) {
     }
 
     const emailPayload: Record<string, string> = {
-      'Submission Type': isBookACall ? 'Book a Call / Discovery Inquiry' : "Contact Form / Let's Plan Your Next Move",
+      'Submission Type': submissionType,
       'Client Name': name,
       'Email Address': email,
     };
@@ -71,7 +88,7 @@ export async function POST(req: Request) {
             <div style="border-bottom: 2px solid #00f2fe; padding-bottom: 12px; margin-bottom: 18px;">
               <h2 style="color: #0f172a; margin: 0 0 6px 0; font-size: 20px;">${subject}</h2>
               <span style="display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #0284c7; font-weight: bold;">
-                ${isBookACall ? 'Priority Call Request' : 'Direct Inquiry'}
+                ${badgeText}
               </span>
             </div>
             <table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px;">
