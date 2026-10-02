@@ -236,7 +236,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                   placeholder="e.g. Jordan Smith"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-base sm:text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
                 />
               </div>
 
@@ -251,7 +251,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                   placeholder="jordan@enterprise.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-base sm:text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
                 />
               </div>
 
@@ -267,7 +267,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                     placeholder="Acme Corp"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-base sm:text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
                   />
                 </div>
 
@@ -279,7 +279,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                     name="Primary Domain"
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
+                    className="w-full px-3 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white text-base sm:text-xs focus:outline-none focus:border-cyber-cyan transition-colors"
                   >
                     {!standardServices.includes(service) && (
                       <option value={service}>{service}</option>
@@ -303,7 +303,7 @@ export default function ConsultationModal({ isOpen, onClose, prefilledPlan }: Co
                   placeholder={defaultNotesPlaceholder}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyber-cyan resize-none transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-slate-800 text-white placeholder-slate-500 text-base sm:text-xs focus:outline-none focus:border-cyber-cyan resize-none transition-colors"
                 />
               </div>
 

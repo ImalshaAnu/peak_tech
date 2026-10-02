@@ -139,3 +139,21 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* Prevent iOS auto-zoom on input focus */
+@media screen and (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Optimize touch interactions */
+input,
+select,
+textarea,
+button {
+  touch-action: manipulation;
+}
+

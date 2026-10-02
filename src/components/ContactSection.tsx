@@ -136,7 +136,7 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
                   placeholder="Enter your name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-slate-400 transition-colors shadow-sm"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-slate-400 transition-colors shadow-sm"
                 />
               </div>
 
@@ -151,7 +151,7 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
                   placeholder="Enter your email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-slate-400 transition-colors shadow-sm"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-slate-400 transition-colors shadow-sm"
                 />
               </div>
             </div>
@@ -200,7 +200,7 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
                       setPhoneError('Phone number must be exactly 10 digits.');
                     }
                   }}
-                  className={`w-full px-5 py-4 rounded-2xl bg-slate-50 border text-slate-900 placeholder-slate-400 text-sm focus:outline-none transition-colors shadow-sm ${
+                  className={`w-full px-5 py-4 rounded-2xl bg-slate-50 border text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none transition-colors shadow-sm ${
                     phoneError 
                       ? 'border-red-400 focus:border-red-500 bg-red-50/20' 
                       : formData.phone.length === 10 
@@ -225,7 +225,7 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
                   placeholder="e.g. 5000"
                   value={formData.budget}
                   onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-slate-400 transition-colors shadow-sm"
+                  className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-slate-400 transition-colors shadow-sm"
                 />
               </div>
             </div>
@@ -241,7 +241,7 @@ export default function ContactSection({ prefilledPlan }: ContactSectionProps = 
                 placeholder="Enter your message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-slate-400 transition-colors resize-none shadow-sm"
+                className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-slate-400 transition-colors resize-none shadow-sm"
               />
             </div>
 
